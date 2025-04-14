@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  MapApp
+
+  Created by Ислам on 14.04.2025.
+  
+*/
+
+"destination_city" = "Moscow";
+"start_button" = "Start";

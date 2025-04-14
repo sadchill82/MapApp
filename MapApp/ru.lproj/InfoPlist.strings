@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  MapApp
+
+  Created by Ислам on 15.04.2025.
+  
+*/
+
+NSLocationWhenInUseUsageDescription = "Пожалуйста, разрешите использовать ваше местоположение";
