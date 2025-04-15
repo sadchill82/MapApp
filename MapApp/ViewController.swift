@@ -31,14 +31,19 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
+        mapView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleMapTap(_ gesture: UITapGestureRecognizer) {
+        let tapPoint = gesture.location(in: mapView)
+        let tappedCoordinate = mapView.convert(tapPoint, toCoordinateFrom: mapView)
+        
         let annotation = MKPointAnnotation()
-        geocoder.geocodeAddressString("Москва") { [weak self] placemarks, error in
-            if let placemark = placemarks?.first {
-                annotation.coordinate = placemark.location!.coordinate
-                self?.mapView.addAnnotation(annotation)
-                self?.destinationCoordinate = placemark.location!.coordinate
-            }
-        }
+        annotation.coordinate = tappedCoordinate
+        mapView.addAnnotation(annotation)
+        
+        destinationCoordinate = tappedCoordinate
     }
     
     func addRouteToDestination() {
